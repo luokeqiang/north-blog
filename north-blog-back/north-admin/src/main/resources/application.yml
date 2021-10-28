@@ -1,0 +1,9 @@
+server:
+  port: 9111
+spring:
+  profiles:
+    active: mysql
+  application:
+    name: north-admin
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
