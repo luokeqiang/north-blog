@@ -1,0 +1,6 @@
+@import "~@/assets/css/normalize.css";
+html,body{
+    height: 100%;
+    width: 100%;
+    font: 14px Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
+}
