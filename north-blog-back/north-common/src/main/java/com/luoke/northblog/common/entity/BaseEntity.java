@@ -40,7 +40,7 @@ public class BaseEntity<T extends Model> extends Model {
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @TableField(value = "crate_time",fill = FieldFill.INSERT_UPDATE)
+    @TableField(value = "create_time",fill = FieldFill.INSERT_UPDATE)
     private Date createTime;
 
     /**

@@ -76,8 +76,12 @@
 </template>
 
 <script>
+import SvgIcon from '@/components/SvgIcon'
 export default {
   name: 'Login',
+  components: {
+    SvgIcon
+  },
   data() {
     const validateUsername = (rule, value, callback) => {
       callback()
@@ -130,11 +134,7 @@ export default {
       })
     },
     showPwd() {
-      if (this.pwdType === 'password') {
-        this.pwdType = ''
-      } else {
-        this.pwdType = 'password'
-      }
+      this.pwdType = this.pwdType === 'password' ? '' : 'password'
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
@@ -143,7 +143,7 @@ export default {
           this.$store
             .dispatch('Login', this.loginForm)
             .then(response => {
-              if (response.code === this.$ECode.SUCCESS) {
+              if (response.code === this.$ResCode.SUCCESS) {
                 this.$router.push({ path: this.redirect || '/' })
               } else {
                 this.$message.error(response.data)

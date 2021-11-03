@@ -26,7 +26,9 @@ import {
   ElBreadcrumb,
   ElBreadcrumbItem,
   ElDivider,
-  ElCheckbox
+  ElCheckbox,
+  ElRadioGroup,
+  ElRadio
 } from 'element-plus'
 const elementComponents = [
   ElButton,
@@ -55,6 +57,8 @@ const elementComponents = [
   ElBreadcrumb,
   ElBreadcrumbItem,
   ElDivider,
-  ElCheckbox
+  ElCheckbox,
+  ElRadioGroup,
+  ElRadio
 ]
 export default elementComponents

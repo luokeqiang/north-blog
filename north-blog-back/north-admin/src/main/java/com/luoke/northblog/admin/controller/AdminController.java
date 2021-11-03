@@ -1,15 +1,20 @@
 package com.luoke.northblog.admin.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.luoke.northblog.common.entity.Admin;
+import com.luoke.northblog.admin.service.AdminService;
+import com.luoke.northblog.common.pojo.bo.PageBo;
+import com.luoke.northblog.common.vo.ResponseVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -21,13 +26,22 @@ import java.time.LocalDateTime;
  */
 @RestController
 @RequestMapping("/admin")
-@Api(value = "管理员接口")
+@Api(tags = "管理员接口")
 public class AdminController {
+    @Resource
+    AdminService adminService;
 
-    @GetMapping("/hello")
-    @ApiOperation("测试")
-    public String test() {
-        return "Hello world" + LocalDateTime.now();
+    @GetMapping("/list")
+    @ApiOperation("分页查询管理员列表")
+    public ResponseVo listAdmin(PageBo pageBo, String name) {
+        return ResponseVo.success("查询成功", adminService.listAdmin(new Page<>(pageBo.getCurrent(), pageBo.getSize()), name));
+    }
+
+    @PostMapping("/create")
+    @ApiOperation("新增管理员用户")
+    public ResponseVo createAdmin(Admin admin) {
+        boolean create = adminService.createAdmin(admin);
+        return create ? ResponseVo.success("新增用户成功",admin) : ResponseVo.error("新增用户失败");
     }
 }
 

@@ -1,15 +1,19 @@
-package com.luoke.northblog.admin.entity;
+package com.luoke.northblog.common.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.luoke.northblog.common.entity.BaseEntity;
-import java.io.Serializable;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Collections;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * <p>
@@ -23,7 +27,7 @@ import lombok.Setter;
 @Setter
 @TableName("admin")
 @ApiModel(value = "Admin对象", description = "管理员表")
-public class Admin extends BaseEntity<Admin> {
+public class Admin extends BaseEntity<Admin> implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
@@ -70,4 +74,34 @@ public class Admin extends BaseEntity<Admin> {
     @ApiModelProperty("是否启用")
     @TableField("is_enabled")
     private Integer isEnabled;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.emptyList();
+    }
+
+    @Override
+    public String getUsername() {
+        return this.userName;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

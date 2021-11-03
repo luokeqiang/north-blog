@@ -56,7 +56,7 @@
       </el-form>
       <el-row :gutter="10" style="margin-bottom: 8px;display: block">
         <el-col :span="1.5">
-          <el-button class="filter-item" type="primary" icon="el-icon-edit">添加博客</el-button>
+          <el-button class="filter-item" type="primary" @click="handleAdd" icon="el-icon-edit">添加博客</el-button>
         </el-col>
 
         <el-col :span="1.5">
@@ -121,7 +121,7 @@
 
       <el-table-column label="分类" width="100" align="center">
         <template v-slot="scope">
-          <span>{{ scope.row.blogSort.category }}</span>
+          <span>{{ scope.row.category }}</span>
         </template>
       </el-table-column>
 
@@ -174,8 +174,8 @@
 
       <el-table-column label="操作" fixed="right" min-width="150">
         <template v-slot="scope">
-          <el-button @click="handleEdit(scope.row)" type="primary" size="small" v-permission="'/blog/edit'">编辑</el-button>
-          <el-button @click="handleDelete(scope.row)" type="danger" size="small" v-permission="'/blog/delete'">删除</el-button>
+          <el-button @click="handleEdit(scope.row)" type="primary" size="small">编辑</el-button>
+          <el-button @click="handleDelete(scope.row)" type="danger" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -190,19 +190,24 @@
 <!--        :total="total"-->
 <!--      ></el-pagination>-->
 <!--    </div>-->
-
+  <blog-edit :visible="visible.blogEdit"/>
   </div>
 </template>
 
 <script>
 import RightToolbar from '@/components/RightToolbar/RightToolbar'
+import BlogEdit from '@/views/blog/BlogEdit'
 export default {
   name: 'Blog',
   components: {
-    RightToolbar
+    RightToolbar,
+    BlogEdit
   },
   data() {
     return {
+      visible: {
+        blogEdit: false
+      },
       showSearch: true,
       queryParams: {
         keyword: '',
@@ -215,17 +220,37 @@ export default {
       }, // 搜索条件
       tagOptions: [], // 标签候选框
       sortOptions: [], // 分类候选框
+      blogPublishDictList: [],
+      openDictList: [],
       tableData: [
         {
           title: '假如给我三天光明',
+          photoList: [],
           author: '海',
-          category: ''
+          category: '',
+          isOriginal: 1,
+          tagList: [],
+          createTime: '',
+          clickCount: ''
+        },
+        {
+          title: '假如给我三天光明',
+          photoList: [],
+          author: '海',
+          category: '',
+          isOriginal: 0,
+          tagList: [],
+          createTime: '',
+          clickCount: ''
         }
       ] // 博客数据
     }
   },
   methods: {
     handleFind() {
+    },
+    handleAdd() {
+      this.visible.blogEdit = true
     }
   }
 }

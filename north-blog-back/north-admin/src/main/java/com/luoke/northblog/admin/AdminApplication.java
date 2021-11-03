@@ -9,7 +9,7 @@ import springfox.documentation.oas.annotations.EnableOpenApi;
  * @author luoke
  * @date 2021/10/27 14:55
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.luoke.northblog.admin","com.luoke.northblog.common"})
 @EnableOpenApi
 @MapperScan(basePackages = {"com.luoke.northblog.admin.mapper"})
 public class AdminApplication {

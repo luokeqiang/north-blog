@@ -13,6 +13,6 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'space-before-function-paren': "off" // 关闭function左括号前必须有一个空格
+    'space-before-function-paren': 'off' // 关闭function左括号前必须有一个空格
   }
 }
