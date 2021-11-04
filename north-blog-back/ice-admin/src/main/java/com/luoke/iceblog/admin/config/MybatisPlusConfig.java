@@ -29,11 +29,11 @@ public class MybatisPlusConfig {
                 .globalConfig(builder -> {
                     builder.author("luoke") // 设置作者
                             .enableSwagger() // 开启 swagger 模式
-                            .outputDir("D:\\study\\Java\\project\\north-blog\\north-blog\\north-blog-back\\north-admin\\src\\main\\java"); // 指定输出目录
+                            .outputDir("D:\\study\\Java\\project\\north-blog\\north-blog\\north-blog-back\\ice-admin\\src\\main\\java"); // 指定输出目录
                 })
                 .packageConfig(builder -> {
                     builder.parent("com.luoke.iceblog.admin") // 设置父包名
-                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "D:\\study\\Java\\project\\north-blog\\north-blog\\north-blog-back\\north-admin\\src\\main\\resources\\mapper")); // 设置mapperXml生成路径
+                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "D:\\study\\Java\\project\\north-blog\\north-blog\\north-blog-back\\ice-admin\\src\\main\\resources\\mapper")); // 设置mapperXml生成路径
                 })
                 .strategyConfig(builder -> {
                     builder.addExclude("admin");
