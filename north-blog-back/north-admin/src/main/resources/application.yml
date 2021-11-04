@@ -22,6 +22,6 @@ logging:
     root: info
     com:
       luoke:
-        northblog:
+        iceblog:
           admin:
             mapper: debug

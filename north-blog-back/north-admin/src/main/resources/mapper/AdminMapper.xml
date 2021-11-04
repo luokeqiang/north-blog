@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.luoke.northblog.admin.mapper.AdminMapper">
-    <cache type="com.luoke.northblog.admin.config.MybatisCache"/>
+<mapper namespace="com.luoke.iceblog.admin.mapper.AdminMapper">
+    <cache type="com.luoke.iceblog.admin.config.MybatisCache"/>
 <!--    <cache/>-->
-    <select id="listAdmin" resultType="com.luoke.northblog.common.entity.Admin">
+    <select id="listAdmin" resultType="com.luoke.iceblog.common.entity.Admin">
         select user_name userName,email from admin
     </select>
 </mapper>

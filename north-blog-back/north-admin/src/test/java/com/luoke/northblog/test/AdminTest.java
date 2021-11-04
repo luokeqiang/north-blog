@@ -1,6 +1,6 @@
-package com.luoke.northblog.test;
+package com.luoke.iceblog.test;
 
-import com.luoke.northblog.admin.AdminApplication;
+import com.luoke.iceblog.admin.AdminApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
